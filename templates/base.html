@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Front page</title>
+    <title>{% block title %}Dart Block{% endblock %}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900"
@@ -28,10 +28,11 @@
 
     {% include 'inc/_header.html' %}
     {% endcache %}
-    {% cache 20 content %}
+
     {% block content %}{% endblock %}
-    {% endcache %}
+    {% cache 20 footer %}
     {% include 'inc/_footer.html' %}
+    {% endcache %}
 </div>
 <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>

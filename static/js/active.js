@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    $('.menu a').each(function () {
+        let location = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        let link = this.href;
+        if (location == link) {
+            $(this).parent().addClass('active');
+        }
+    });
 //    $('.my-slider').unslider({
 //        animation: 'vertical',
 //        autoplay: true,
@@ -17,7 +24,7 @@ $(document).ready(function () {
 //        "<i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>",
 //        "<i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>"],
 //    });
-     var $grid = $('.grid').isotope({
+    var $grid = $('.grid').isotope({
 //        itemSelector: '.portfolio-item',
         layoutMode: 'fitRows'
     });

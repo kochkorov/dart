@@ -2,9 +2,9 @@ from django.db import models
 from django.urls import reverse
 
 
-class Category (models.Model):
+class Category(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, verbose_name= 'Url', unique=True)
+    slug = models.SlugField(max_length=255, verbose_name='Url', unique=True)
 
     def __str__(self):
         return self.title
@@ -25,10 +25,14 @@ class Tag(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('tag', kwargs={"slug": self.slug})
+
     class Mete:
         ordering = ['title']
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
+
 
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name='Наименование')
@@ -44,5 +48,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('post', kwargs={"slug": self.slug})
+
     class Mete:
-        ordering = ['title']
+        ordering = ['-created_ad']
